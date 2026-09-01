@@ -1,0 +1,140 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adfsqlmigrationproject01"
+		},
+		"ADLS_SQL_PARQUET_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ADLS_SQL_PARQUET'"
+		},
+		"LS_LKUP_MAX_VALUE_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_LKUP_MAX_VALUE'"
+		},
+		"LS_ONPrem_SQLServer_DW_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_ONPrem_SQLServer_DW'"
+		},
+		"LS_SQLSERVER_TBLBKP_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQLSERVER_TBLBKP'"
+		},
+		"ADLS_SQL_PARQUET_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlssqlmigrationproject.dfs.core.windows.net/"
+		},
+		"LS_LKUP_MAX_VALUE_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "DESKTOP-06NRSR8\\SQLEXPRESS"
+		},
+		"LS_LKUP_MAX_VALUE_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "RetailDW_Dev"
+		},
+		"LS_LKUP_MAX_VALUE_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sayaliphatak"
+		},
+		"LS_ONPrem_SQLServer_DW_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "DESKTOP-06NRSR8\\SQLEXPRESS"
+		},
+		"LS_ONPrem_SQLServer_DW_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "RetailDW_Dev"
+		},
+		"LS_ONPrem_SQLServer_DW_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sayaliphatak"
+		},
+		"LS_SQLSERVER_TBLBKP_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "DESKTOP-06NRSR8\\SQLEXPRESS"
+		},
+		"LS_SQLSERVER_TBLBKP_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "RetailDW_Dev"
+		},
+		"LS_SQLSERVER_TBLBKP_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sayaliphatak"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adfsqlmigrationproject01_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ADLS_SQL_PARQUET_accountKey": {
+						"value": "[parameters('ADLS_SQL_PARQUET_accountKey')]"
+					},
+					"LS_LKUP_MAX_VALUE_password": {
+						"value": "[parameters('LS_LKUP_MAX_VALUE_password')]"
+					},
+					"LS_ONPrem_SQLServer_DW_password": {
+						"value": "[parameters('LS_ONPrem_SQLServer_DW_password')]"
+					},
+					"LS_SQLSERVER_TBLBKP_password": {
+						"value": "[parameters('LS_SQLSERVER_TBLBKP_password')]"
+					},
+					"ADLS_SQL_PARQUET_properties_typeProperties_url": {
+						"value": "[parameters('ADLS_SQL_PARQUET_properties_typeProperties_url')]"
+					},
+					"LS_LKUP_MAX_VALUE_properties_typeProperties_server": {
+						"value": "[parameters('LS_LKUP_MAX_VALUE_properties_typeProperties_server')]"
+					},
+					"LS_LKUP_MAX_VALUE_properties_typeProperties_database": {
+						"value": "[parameters('LS_LKUP_MAX_VALUE_properties_typeProperties_database')]"
+					},
+					"LS_LKUP_MAX_VALUE_properties_typeProperties_userName": {
+						"value": "[parameters('LS_LKUP_MAX_VALUE_properties_typeProperties_userName')]"
+					},
+					"LS_ONPrem_SQLServer_DW_properties_typeProperties_server": {
+						"value": "[parameters('LS_ONPrem_SQLServer_DW_properties_typeProperties_server')]"
+					},
+					"LS_ONPrem_SQLServer_DW_properties_typeProperties_database": {
+						"value": "[parameters('LS_ONPrem_SQLServer_DW_properties_typeProperties_database')]"
+					},
+					"LS_ONPrem_SQLServer_DW_properties_typeProperties_userName": {
+						"value": "[parameters('LS_ONPrem_SQLServer_DW_properties_typeProperties_userName')]"
+					},
+					"LS_SQLSERVER_TBLBKP_properties_typeProperties_server": {
+						"value": "[parameters('LS_SQLSERVER_TBLBKP_properties_typeProperties_server')]"
+					},
+					"LS_SQLSERVER_TBLBKP_properties_typeProperties_database": {
+						"value": "[parameters('LS_SQLSERVER_TBLBKP_properties_typeProperties_database')]"
+					},
+					"LS_SQLSERVER_TBLBKP_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SQLSERVER_TBLBKP_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
